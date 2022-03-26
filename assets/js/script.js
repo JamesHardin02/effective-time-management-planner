@@ -20,7 +20,14 @@ var loadTasks = function() {
     if (!schedule) {
         schedule = {
             nineAm: {},
-            tenAm: {}
+            tenAm: {},
+            elevenAm: {},
+            twelveAm: {},
+            onePm: {},
+            twoPm: {},
+            threePm: {},
+            fourPm: {},
+            fivePm: {}
     };
     }
 
