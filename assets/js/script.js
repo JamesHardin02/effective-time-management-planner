@@ -1,13 +1,14 @@
 schedule = {};
 
 var createTask = function(taskText, taskList) {
-    console.log(taskText, taskList);
     $("#" + taskList).each(function(index, child){
-        console.log(child.children)
-        if (child.children.hasAttribute("task")){
-            console.log(child.children)
-            console.log(child.children.text())
-            child.children.text() = taskText;
+        for(const property in child.children){
+            console.log(child.children[property].id)
+            if (child.children[property].id === "task"){
+                console.log("hi")
+                child.children[property].textContent = taskText;
+                console.log(child.children)
+            }
         }
     });
 };
@@ -43,7 +44,6 @@ function saveTasks(){
 
 $("#hour-schedule").on('click', "#task", function(){
     var text = $(this).text().trim();
-    
     var textInput = $("<textarea>")
     .addClass("form-control col 6")
     .val(text);
