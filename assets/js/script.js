@@ -29,40 +29,115 @@ var auditTime = function(taskLi){
         break;
         case 11: 
         if(taskId === "elevenAm"){
-            taskLi.querySelector('#task').classList.add('currentTime')
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 2){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
         }
         break;
         case 12: 
         if(taskId === "twelveAm"){
-            taskLi.querySelector('#task').classList.add('currentTime')
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 3){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
         }
         break;
         case 13: 
         if(taskId === "onePm"){
-            taskLi.querySelector('#task').classList.add('currentTime')
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 4){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
         }
         break;
         case 14: 
         if(taskId === "twoPm"){
-            taskLi.querySelector('#task').classList.add('currentTime')
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 5){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
         }
         break;
         case 15: 
         if(taskId === "threePm"){
-            taskLi.querySelector('#task').classList.add('currentTime')
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 6){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
         }
         break;
         case 16: 
         if(taskId === "fourPm"){
-            taskLi.querySelector('#task').classList.add('currentTime')
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 7){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
         }
         break;
         case 17: 
         if(taskId === "fivePm"){
-            taskLi.querySelector('#task').classList.add('currentTime')
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 8){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
         }
         break;
-    }
+        case w >= 18:
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 9){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
+            break;
+    };
 };
 // ------- END OF AUDIT TIME ------- //
 
