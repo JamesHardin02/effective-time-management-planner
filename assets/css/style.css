@@ -69,3 +69,17 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+.currentTime{
+  background-color: rgb(233, 76, 76);
+  color: white;
+}
+
+.pastTime{
+  background-color: rgba(92, 92, 92, 0.3);
+  color: white;
+}
+
+.futureTime{
+  background-color: rgb(98, 255, 111);
+}

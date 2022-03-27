@@ -1,19 +1,86 @@
 schedule = {};
 
+// ------- AUDIT TIME ------- //
+var auditTime = function(taskLi){
+    var taskId = taskLi.id;
+    var m = moment().hour();
+    switch (m){
+        case 9: 
+        if(taskId === "nineAm"){
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+        }
+        break;
+        case 10: 
+        if(taskId === "tenAm"){
+            taskLi.querySelector('#task').classList.remove('futureTime');
+            taskLi.querySelector('#task').classList.add('currentTime');
+            var parent = document.querySelector("#hour-schedule");
+            var childLi = parent.getElementsByTagName('li');
+            for(var i = 0; i < childLi.length; i++){
+                if (i < 1){
+                    childLi[i].querySelector('#task').classList.remove('futureTime');
+                    childLi[i].querySelector('#task').classList.add("pastTime");
+                }
+            };
+            console.log(parent);
+
+        }
+        break;
+        case 11: 
+        if(taskId === "elevenAm"){
+            taskLi.querySelector('#task').classList.add('currentTime')
+        }
+        break;
+        case 12: 
+        if(taskId === "twelveAm"){
+            taskLi.querySelector('#task').classList.add('currentTime')
+        }
+        break;
+        case 13: 
+        if(taskId === "onePm"){
+            taskLi.querySelector('#task').classList.add('currentTime')
+        }
+        break;
+        case 14: 
+        if(taskId === "twoPm"){
+            taskLi.querySelector('#task').classList.add('currentTime')
+        }
+        break;
+        case 15: 
+        if(taskId === "threePm"){
+            taskLi.querySelector('#task').classList.add('currentTime')
+        }
+        break;
+        case 16: 
+        if(taskId === "fourPm"){
+            taskLi.querySelector('#task').classList.add('currentTime')
+        }
+        break;
+        case 17: 
+        if(taskId === "fivePm"){
+            taskLi.querySelector('#task').classList.add('currentTime')
+        }
+        break;
+    }
+};
+// ------- END OF AUDIT TIME ------- //
+
 var createTask = function(taskText, taskList) {
     $("#" + taskList).each(function(index, child){
         for(const property in child.children){
-            console.log(child.children[property].id)
             if (child.children[property].id === "task"){
-                console.log("hi")
                 child.children[property].textContent = taskText;
-                console.log(child.children)
             }
         }
     });
 };
 
 var loadTasks = function() {
+    $("#hour-schedule .li").each(function(index, el) {
+        console.log(el)
+        auditTime(el);
+    });
     schedule = JSON.parse(localStorage.getItem("schedule"));
     console.log(schedule)
     // if nothing in localStorage, create a new object to track all task status arrays
@@ -36,7 +103,6 @@ var loadTasks = function() {
         console.log(list, object);
         // then loop over sub-array
         for(const property in object){
-            console.log(object[property])
             createTask(object[property], list);
         }
     });
@@ -82,3 +148,11 @@ $("#hour-schedule").on("blur", "textarea", function(){
 });
 
 loadTasks();
+
+setInterval(function () {
+    $("#hour-schedule .li").each(function(index, el) {
+        console.log(el)
+        auditTime(el);
+    });
+},((1000 * 60) * 30));
+
