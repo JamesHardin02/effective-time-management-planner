@@ -197,11 +197,12 @@ $("#hour-schedule").on("blur", "textarea", function(){
     var taskP = $("<p>").addClass("col 6").text(text);
     taskP.attr("id", "task")
 
-
     // replace textarea with p element
     $(this).replaceWith(taskP);
     $("#hour-schedule .li").each(function(index, el) {
         el.querySelector("#task").classList.add("futureTime");
+        el.querySelector("#task").classList.add("lead");
+        el.querySelector("#task").classList.add("pt-4");
         auditTime(el);
     });
 });
