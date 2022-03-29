@@ -1,5 +1,13 @@
 schedule = {};
 
+// DISPLAY CURRRENT DAY
+function currentDay() {
+    var dayP = document.querySelector("#currentDay");
+    var day = moment().format("dddd MMM Mo YYYY")
+    dayP.textContent = day
+}
+// END DISPLAY CURRENT DAY
+
 // ------- AUDIT TIME ------- //
 var auditTime = function(taskLi){
     var taskId = taskLi.id;
@@ -208,10 +216,11 @@ $("#hour-schedule").on("blur", "textarea", function(){
 });
 
 loadTasks();
-
+currentDay();
 setInterval(function () {
     $("#hour-schedule .li").each(function(index, el) {
         auditTime(el);
+        currentDay()
     });
 },((1000 * 60) * 30));
 
