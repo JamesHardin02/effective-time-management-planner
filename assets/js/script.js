@@ -23,8 +23,6 @@ var auditTime = function(taskLi){
                     childLi[i].querySelector('#task').classList.add("pastTime");
                 }
             };
-            console.log(parent);
-
         }
         break;
         case 11: 
@@ -125,18 +123,6 @@ var auditTime = function(taskLi){
             };
         }
         break;
-        case w >= 18:
-            taskLi.querySelector('#task').classList.remove('futureTime');
-            taskLi.querySelector('#task').classList.add('currentTime');
-            var parent = document.querySelector("#hour-schedule");
-            var childLi = parent.getElementsByTagName('li');
-            for(var i = 0; i < childLi.length; i++){
-                if (i < 9){
-                    childLi[i].querySelector('#task').classList.remove('futureTime');
-                    childLi[i].querySelector('#task').classList.add("pastTime");
-                }
-            };
-            break;
     };
 };
 // ------- END OF AUDIT TIME ------- //
@@ -153,11 +139,9 @@ var createTask = function(taskText, taskList) {
 
 var loadTasks = function() {
     $("#hour-schedule .li").each(function(index, el) {
-        console.log(el)
         auditTime(el);
     });
     schedule = JSON.parse(localStorage.getItem("schedule"));
-    console.log(schedule)
     // if nothing in localStorage, create a new object to track all task status arrays
     if (!schedule) {
         schedule = {
@@ -175,7 +159,6 @@ var loadTasks = function() {
 
     // loop over object properties
     $.each(schedule, function(list, object) {
-        console.log(list, object);
         // then loop over sub-array
         for(const property in object){
             createTask(object[property], list);
@@ -185,7 +168,6 @@ var loadTasks = function() {
 
 function saveTasks(){
     // localStorage.schedule = Object.values(schedule).map(x=>x.text).join(',')
-    console.log(schedule)
     localStorage.setItem("schedule", JSON.stringify(schedule));
 };
 
@@ -203,14 +185,11 @@ $("#hour-schedule").on('click', "#task", function(){
 $("#hour-schedule").on("blur", "textarea", function(){
     // get the textarea's current value/text
     var text = $(this).val().trim();
-    console.log(text)
 
     // get the parent ul's id attribute
     var status = $(this)
         .closest(".li")
         .attr("id");
-    console.log(status)
-    console.log(schedule)
     // update schedule object and save to local storage
     schedule[status].text = text;
     saveTasks(); 
@@ -218,15 +197,19 @@ $("#hour-schedule").on("blur", "textarea", function(){
     var taskP = $("<p>").addClass("col 6").text(text);
     taskP.attr("id", "task")
 
+
     // replace textarea with p element
     $(this).replaceWith(taskP);
+    $("#hour-schedule .li").each(function(index, el) {
+        el.querySelector("#task").classList.add("futureTime");
+        auditTime(el);
+    });
 });
 
 loadTasks();
 
 setInterval(function () {
     $("#hour-schedule .li").each(function(index, el) {
-        console.log(el)
         auditTime(el);
     });
 },((1000 * 60) * 30));
